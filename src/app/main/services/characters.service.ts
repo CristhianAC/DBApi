@@ -11,8 +11,9 @@ export class CharactersService {
   http = inject(HttpClient);
   url = environment.apiUrl
   getCharacters(): Observable<Item[]> {
-    return this.http.get<Character>(this.url + 'characters').pipe(
+    return this.http.get<Character>(this.url + 'characters', { headers: { }}).pipe(
       map(info => CharacterAdapter(info))
     );
   }
+  
 }

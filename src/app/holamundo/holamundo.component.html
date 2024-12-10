@@ -1,7 +1,14 @@
-<app-hijo-hola-mundo tituloNombreSignal="hijoHolaMundo" (valorPaMiPapa)="recibirValor($event)"/>
+<app-hijo-hola-mundo tituloNombreSignal="hijoHolaMundo" (valorPaMiPapa)="recibirValor($event)" />
 {{valor}}
 @for(item of title; track $index){
-    <h1>{{item}}</h1>
+    @defer (on viewport) {
+        <h1>{{item}}</h1>
+    }@placeholder {
+        <h1>Loading...</h1>
+    }@loading {
+        <h1>Loading...</h1>
+    }@error {
+        <h1>Error...</h1>
+    }
+
 }
-
-
